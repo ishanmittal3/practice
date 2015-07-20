@@ -16,7 +16,13 @@ public class Successor {
 		}
 		return parent;
 	}
-
+	
+	/**
+	 * 
+	 * @param node
+	 * @return If there's no left child, 
+	 * returns the node itself
+	 */
 	private Node getLeftMostChild(Node node) {
 		if(node == null) {
 			return null;
@@ -54,21 +60,30 @@ public class Successor {
 		return parent.right;
 	}
 	
-	/*Node postOrderSuccessor(Node node) {
+	Node postOrderSuccessor(Node node) {
 		if(node == null) {
 			return null;
 		}
-		if(node.left != null) {
-			return getLeftMostChild(node);
-		}
 		Node parent = node.parent;
 		if(parent == null) {
-			return getLeftMostChild(node.right);
+			return null;
 		}
-		while(parent != null && parent.right == null) {
-			node = parent;
-			parent = node.parent;
+		if(parent.right == node) {
+			return parent;
 		}
-		
-	}*/
+		if(parent.right == null) {
+			return parent;
+		}
+		Node curr = parent.right;
+		Node leftMostChild = getLeftMostChild(curr);
+		while(leftMostChild == curr) {
+			Node rightChild = curr.right;
+			if(rightChild == null) {
+				return curr;
+			}
+			curr = rightChild;
+			leftMostChild = getLeftMostChild(curr);
+		}
+		return leftMostChild;
+	}
 }
