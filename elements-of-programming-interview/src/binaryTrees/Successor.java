@@ -44,18 +44,12 @@ public class Successor {
 			return node.right;
 		}
 		Node parent = node.parent;
-		Node prev = node;
 		while(parent != null && (parent.right == node || parent.right == null)) {
-			prev = node;
 			node = parent;
 			parent = node.parent;
 		}
 		if(parent == null) {
-			if(prev == node.right) {
-				return null;
-			} else {
-				return node.right;
-			}
+			return null;
 		}
 		return parent.right;
 	}
