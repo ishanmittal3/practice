@@ -1,4 +1,4 @@
-package sandbox;
+package dp;
 
 /**
  * There are n houses built in a line, 
