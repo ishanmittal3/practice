@@ -1,4 +1,4 @@
-package sandbox;
+package string;
 
 public class RotateString {
 
