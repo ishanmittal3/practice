@@ -3,6 +3,8 @@ package arrays;
 public class MaxDifference {
 
 	// Max diff between any two numbers
+	// diff = nums[pos2] - nums[pos1]
+	// where pos2 > pos1
 	int maxDiff(int[] nums) {
 		int min = nums[0];
 		int maxDiff = 0;
