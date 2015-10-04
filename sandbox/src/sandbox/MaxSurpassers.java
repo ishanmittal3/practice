@@ -16,8 +16,8 @@ public class MaxSurpassers {
 			int rightCount = 0;
 			Node curr = root;
 			while(curr != null) {
-				rightCount += curr.rightBranchLength;
 				if(num < curr.value) {
+					rightCount += curr.rightBranchLength;
 					if(curr.left == null) {
 						curr.left = new Node(num, 1 + curr.leftMoves, 0);
 						maxSurpassers = Math.max(maxSurpassers, curr.leftMoves + 1 + rightCount);
@@ -51,10 +51,6 @@ public class MaxSurpassers {
 			this.value = value;
 			this.leftMoves = leftMoves;
 			this.rightBranchLength = rightBranchLength;
-		}
-		
-		boolean isLeaf() {
-			return left == null && right == null;
 		}
 	}
 	
