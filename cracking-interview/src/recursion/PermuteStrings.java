@@ -43,9 +43,32 @@ public class PermuteStrings {
 		return finalPerms;
 	}
 	
+	public static Set<String> permute2(String string) {
+		if (string.length() == 0) {
+			return new HashSet<>();
+		}
+		if (string.length() == 1) {
+			Set<String> set = new HashSet<>();
+			set.add(string);
+			return set;
+		}
+		return permute(string.charAt(0), permute(string.substring(1)));
+	}
+	
+	public static Set<String> permute(char c, Set<String> strings) {
+		Set<String> set = new HashSet<>();
+		for (String string : strings) {
+			set.add(c + string);
+			for (int pos = 1; pos < string.length(); pos++) {
+				set.add(string.substring(0, pos) + c + string.substring(pos));
+			}
+		}
+		return set;
+	}
 	public static void main(String[] args) {
 		Set<String> perms = permute("abca", 3);
 //		Set<String> perms = permute("abca");
+		Set<String> perms2 = permute2("test");
 		int size = perms.size();
 	}
 }
