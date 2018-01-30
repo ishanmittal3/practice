@@ -34,6 +34,26 @@ public class QuickSort {
 			quickSort(values, swapPos + 2, end);
 		}
 	}
+	
+	public static void quickSort2(int[] array, int start, int end) {
+		if (start >= end) {
+			return;
+		}
+		int pivot = array[start];
+		int curr = start;
+		int more = end;
+		
+		while (curr <= more) {
+			if (array[curr] <= pivot) {
+				curr++;
+			} else {
+				swap(array, curr, more--);
+			}
+		}
+		swap(array, start, more);
+		quickSort2(array, start, more - 1);
+		quickSort2(array, more + 1, end);
+	}
 
 	public static void swap(int[] values, int swapPos, int pos) {
 		int temp = values[pos];
