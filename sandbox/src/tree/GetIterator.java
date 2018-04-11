@@ -4,12 +4,6 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class GetIterator {
-
-	class Node {
-		int data;
-		Node left;
-		Node right;
-	}
 	
 	/**
 	 * An iterator that gives in-order traversal 
