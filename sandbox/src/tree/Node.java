@@ -5,6 +5,10 @@ public class Node {
 	Node left;
 	Node right;
 	
+	Node(int value) {
+		this.value = value;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
