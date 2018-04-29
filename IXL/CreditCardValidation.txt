@@ -1,0 +1,18 @@
+boolean isPossiblyValid(int expMM, int expYY) {
+    int currYY = getCurrYY();
+    int currMM = getCurrMM();
+      
+    int range = 4; // #years a credit card is valid
+        
+    if (expYY == currYY) {
+        return expMM >= currMM;
+    } else {
+        return inRange(expYY,       currYY, currYY + range) ||
+               inRange(expYY + 100, currYY, currYY + range);
+    }
+}
+
+boolean inRange(int num, int lower, int upper) {
+    return num >= lower && 
+           num <= upper;
+}
