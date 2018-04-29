@@ -5,6 +5,7 @@
 .mtj.tmp/
 
 *.iml
+.idea
 
 # Package Files #
 *.jar
