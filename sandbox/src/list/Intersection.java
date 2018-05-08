@@ -23,7 +23,7 @@ public class Intersection {
                 node2 = node2.next;
             }
         }
-        
+
         if (intersection.isEmpty()) {
             return null;
         }
