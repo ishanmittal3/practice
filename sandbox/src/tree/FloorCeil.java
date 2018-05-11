@@ -7,7 +7,7 @@ import java.util.List;
  * Given a BST, find floor and ceil of a given key in it
  */
 public class FloorCeil {
-    
+
     List<Integer> getFloorCeil(Node root, int key) {
         int floor = root.value;
         int ceil = root.value;
