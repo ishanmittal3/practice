@@ -21,6 +21,8 @@ public class GetPath {
 		Set<Node> visited = new HashSet<>();
 		while (!stack.isEmpty()) {
 			Node curr = stack.peek();
+			// This is the difference from the usual traversal - don't pop the first time ,
+			// but only when its children are exhausted (and therefore no path exists there)
 			if (visited.contains(curr)) {
 				stack.pop();
 				continue;

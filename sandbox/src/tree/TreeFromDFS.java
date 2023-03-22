@@ -15,23 +15,41 @@ public class TreeFromDFS {
 		int currDepth = 0;
 		for (int pos = 1; pos < nums.length; pos++) { 
 			int num = nums[pos];
-			if (currDepth == depth) {
-				stack.pop();
-				currDepth--;
-			}
-			Node top = stack.peek();
-			while ((top.left != null) && (top.right != null)) {
-				stack.pop();
-				currDepth--;
-				top = stack.peek();
-			}
-			Node newNode = new Node(num);
-			if (top.left == null) {
-				top.left = newNode;
+			if (currDepth == depth-1) {
+				if (stack.peek().left == null) {
+					stack.peek().left = new Node(num);
+				} else if (stack.peek().right == null) {
+					stack.peek().right = new Node(num);
+				} else {
+					while (!stack.isEmpty() && (stack.peek().left != null) && (stack.peek().right != null)) {
+						Node top = stack.pop();
+						currDepth--;
+						if (stack.isEmpty()) {
+							break;
+						}
+						if (stack.peek().left != null) {
+							stack.peek().left = top;
+						} else if (stack.peek().right != null) {
+							stack.peek().right = top;
+						}
+					}
+				}
 			} else {
-				top.right = newNode;
+				stack.push(new Node(num));
+				currDepth++;
 			}
-			currDepth++;
+		}
+
+		while (!stack.isEmpty()) {
+			Node top = stack.pop();
+			if (stack.isEmpty()) {
+				break;
+			}
+			if (stack.peek().left != null) {
+				stack.peek().left = top;
+			} else if (stack.peek().right != null) {
+				stack.peek().right = top;
+			}
 		}
 		
 		return root;
